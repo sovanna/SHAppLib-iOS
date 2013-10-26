@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>SHAppIOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>SHAppLib.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>4D97D115181C30DD009A1968</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4D97D136181C4420009A1968</key>
 		<dict>
 			<key>primary</key>
 			<true/>

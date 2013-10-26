@@ -1,5 +1,5 @@
 //
-//  SHAppLib.h
+//  SHURLRequest.h
 //  SHAppLib
 //
 //  Created by Sovanna Hing on 26/10/2013.
@@ -31,8 +31,16 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SHURLRequest.h"
+typedef void(^SHURLRequestCompletionHandler)(id data, int status);
 
-@interface SHAppLib : NSObject
+@interface SHURLRequest : NSObject
+
++ (SHURLRequest *)getFromURL:(NSString *)url
+                  withParams:(id)params
+               andCompletion:(SHURLRequestCompletionHandler)block;
+
++ (SHURLRequest *)postToURL:(NSString *)url
+                 withParams:(id)params
+              andCompletion:(SHURLRequestCompletionHandler)block;
 
 @end

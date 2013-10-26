@@ -1,5 +1,5 @@
 //
-//  SHAppLib.h
+//  SHConstant.h
 //  SHAppLib
 //
 //  Created by Sovanna Hing on 26/10/2013.
@@ -31,8 +31,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SHURLRequest.h"
+extern NSInteger const kREQUEST_TIMEOUT;
 
-@interface SHAppLib : NSObject
+@interface SHConstant : NSObject
 
 @end

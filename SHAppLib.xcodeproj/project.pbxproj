@@ -6,16 +6,33 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		4D97D136181C4420009A1968 /* SHAppIOS */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 4D97D137181C4420009A1968 /* Build configuration list for PBXAggregateTarget "SHAppIOS" */;
+			buildPhases = (
+				4D97D13A181C4467009A1968 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = SHAppIOS;
+			productName = SHAppIOS;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		4D97D10A181C30DC009A1968 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D97D109181C30DC009A1968 /* Foundation.framework */; };
 		4D97D10F181C30DC009A1968 /* SHAppLib.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D97D10E181C30DC009A1968 /* SHAppLib.h */; };
-		4D97D111181C30DC009A1968 /* SHAppLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D97D110181C30DC009A1968 /* SHAppLib.m */; };
 		4D97D118181C30DD009A1968 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D97D117181C30DD009A1968 /* XCTest.framework */; };
 		4D97D119181C30DD009A1968 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D97D109181C30DC009A1968 /* Foundation.framework */; };
 		4D97D11B181C30DD009A1968 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D97D11A181C30DD009A1968 /* UIKit.framework */; };
 		4D97D11E181C30DD009A1968 /* libSHAppLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D97D106181C30DC009A1968 /* libSHAppLib.a */; };
 		4D97D124181C30DD009A1968 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D97D122181C30DD009A1968 /* InfoPlist.strings */; };
 		4D97D126181C30DD009A1968 /* SHAppLibTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D97D125181C30DD009A1968 /* SHAppLibTests.m */; };
+		4D97D132181C3561009A1968 /* SHURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D97D131181C3561009A1968 /* SHURLRequest.m */; };
+		4D97D135181C3754009A1968 /* SHConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D97D134181C3754009A1968 /* SHConstant.m */; };
+		4D97D183181C4A29009A1968 /* SHURLRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D97D130181C3561009A1968 /* SHURLRequest.h */; };
+		4D97D184181C4A29009A1968 /* SHConstant.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D97D133181C3754009A1968 /* SHConstant.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +52,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				4D97D183181C4A29009A1968 /* SHURLRequest.h in CopyFiles */,
+				4D97D184181C4A29009A1968 /* SHConstant.h in CopyFiles */,
 				4D97D10F181C30DC009A1968 /* SHAppLib.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,13 +65,16 @@
 		4D97D109181C30DC009A1968 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4D97D10D181C30DC009A1968 /* SHAppLib-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SHAppLib-Prefix.pch"; sourceTree = "<group>"; };
 		4D97D10E181C30DC009A1968 /* SHAppLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SHAppLib.h; sourceTree = "<group>"; };
-		4D97D110181C30DC009A1968 /* SHAppLib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAppLib.m; sourceTree = "<group>"; };
 		4D97D116181C30DD009A1968 /* SHAppLibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHAppLibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D97D117181C30DD009A1968 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		4D97D11A181C30DD009A1968 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		4D97D121181C30DD009A1968 /* SHAppLibTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SHAppLibTests-Info.plist"; sourceTree = "<group>"; };
 		4D97D123181C30DD009A1968 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4D97D125181C30DD009A1968 /* SHAppLibTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SHAppLibTests.m; sourceTree = "<group>"; };
+		4D97D130181C3561009A1968 /* SHURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHURLRequest.h; sourceTree = "<group>"; };
+		4D97D131181C3561009A1968 /* SHURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHURLRequest.m; sourceTree = "<group>"; };
+		4D97D133181C3754009A1968 /* SHConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHConstant.h; sourceTree = "<group>"; };
+		4D97D134181C3754009A1968 /* SHConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHConstant.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,8 +132,8 @@
 		4D97D10B181C30DC009A1968 /* SHAppLib */ = {
 			isa = PBXGroup;
 			children = (
+				4D97D12F181C33F1009A1968 /* lib */,
 				4D97D10E181C30DC009A1968 /* SHAppLib.h */,
-				4D97D110181C30DC009A1968 /* SHAppLib.m */,
 				4D97D10C181C30DC009A1968 /* Supporting Files */,
 			);
 			path = SHAppLib;
@@ -141,6 +163,17 @@
 				4D97D122181C30DD009A1968 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4D97D12F181C33F1009A1968 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				4D97D130181C3561009A1968 /* SHURLRequest.h */,
+				4D97D131181C3561009A1968 /* SHURLRequest.m */,
+				4D97D133181C3754009A1968 /* SHConstant.h */,
+				4D97D134181C3754009A1968 /* SHConstant.m */,
+			);
+			path = lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,6 +237,7 @@
 			targets = (
 				4D97D105181C30DC009A1968 /* SHAppLib */,
 				4D97D115181C30DD009A1968 /* SHAppLibTests */,
+				4D97D136181C4420009A1968 /* SHAppIOS */,
 			);
 		};
 /* End PBXProject section */
@@ -219,12 +253,30 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4D97D13A181C4467009A1968 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target SHAppLib ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\nxcodebuild -target SHAppLib -configuration ${CONFIGURATION} -sdk iphonesimulator -arch i386 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 2. Create universal binary file using lipo\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/lib${PROJECT_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${PROJECT_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${PROJECT_NAME}.a\"\n\n# Last touch. copy the header files. Just for convenience\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/include\" \"${UNIVERSAL_OUTPUTFOLDER}/\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4D97D102181C30DC009A1968 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D97D111181C30DC009A1968 /* SHAppLib.m in Sources */,
+				4D97D135181C3754009A1968 /* SHConstant.m in Sources */,
+				4D97D132181C3561009A1968 /* SHURLRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,7 +342,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -322,7 +374,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -390,6 +442,20 @@
 			};
 			name = Release;
 		};
+		4D97D138181C4420009A1968 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4D97D139181C4420009A1968 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -415,6 +481,14 @@
 			buildConfigurations = (
 				4D97D12D181C30DD009A1968 /* Debug */,
 				4D97D12E181C30DD009A1968 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4D97D137181C4420009A1968 /* Build configuration list for PBXAggregateTarget "SHAppIOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D97D138181C4420009A1968 /* Debug */,
+				4D97D139181C4420009A1968 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
