@@ -1,8 +1,8 @@
 //
-//  SHConstant.h
+//  SHTools.h
 //  SHAppLib
 //
-//  Created by Sovanna Hing on 26/10/2013.
+//  Created by Sovanna Hing on 28/10/2013.
 //
 //  Copyright (c) 2013, Sovanna Hing.
 //  All rights reserved.
@@ -29,8 +29,10 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-extern NSInteger const kREQUEST_TIMEOUT;
+@interface SHTools : NSObject
 
-@interface SHConstant : NSObject
++ (BOOL)isIphone5;
++ (BOOL)isIphone;
++ (BOOL)isIpad;
 
 @end

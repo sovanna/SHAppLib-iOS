@@ -1,8 +1,8 @@
 //
-//  SHConstant.h
+//  SHTools.m
 //  SHAppLib
 //
-//  Created by Sovanna Hing on 26/10/2013.
+//  Created by Sovanna Hing on 28/10/2013.
 //
 //  Copyright (c) 2013, Sovanna Hing.
 //  All rights reserved.
@@ -29,8 +29,31 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-extern NSInteger const kREQUEST_TIMEOUT;
+#import "SHTools.h"
 
-@interface SHConstant : NSObject
+@implementation SHTools
+
++ (BOOL)isIphone5
+{
+    BOOL isTrue = NO;
+    
+    if ([[self class] isIphone] &&
+        [UIScreen mainScreen].scale == 2.f &&
+        [UIScreen mainScreen].bounds.size.height == 568) {
+        isTrue = YES;
+    }
+    
+    return isTrue;
+}
+
++ (BOOL)isIphone
+{
+    return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
+}
+
++ (BOOL)isIpad
+{
+    return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad);
+}
 
 @end

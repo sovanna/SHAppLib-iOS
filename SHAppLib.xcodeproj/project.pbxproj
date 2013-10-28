@@ -33,6 +33,8 @@
 		4D97D135181C3754009A1968 /* SHConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D97D134181C3754009A1968 /* SHConstant.m */; };
 		4D97D183181C4A29009A1968 /* SHURLRequest.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 4D97D130181C3561009A1968 /* SHURLRequest.h */; };
 		4D97D184181C4A29009A1968 /* SHConstant.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 4D97D133181C3754009A1968 /* SHConstant.h */; };
+		C45ADFCD181EDFD100A2A807 /* SHTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C45ADFCC181EDFD100A2A807 /* SHTools.m */; };
+		C4D4A853181EE04300AF461A /* SHTools.h in Headers */ = {isa = PBXBuildFile; fileRef = C45ADFCB181EDFD100A2A807 /* SHTools.h */; };
 		C4DB3EE6181E8611007AE943 /* SHURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D97D130181C3561009A1968 /* SHURLRequest.h */; };
 		C4DB3EE7181E8611007AE943 /* SHConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D97D133181C3754009A1968 /* SHConstant.h */; };
 /* End PBXBuildFile section */
@@ -66,6 +68,7 @@
 			dstPath = "${BUILD_DIR}/${CONFIGURATION}-universal/${PRODUCT_NAME}.framework/Headers";
 			dstSubfolderSpec = 0;
 			files = (
+				C4D4A853181EE04300AF461A /* SHTools.h in Headers */,
 				C4DB3EE6181E8611007AE943 /* SHURLRequest.h in Headers */,
 				C4DB3EE7181E8611007AE943 /* SHConstant.h in Headers */,
 			);
@@ -89,6 +92,8 @@
 		4D97D131181C3561009A1968 /* SHURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHURLRequest.m; sourceTree = "<group>"; };
 		4D97D133181C3754009A1968 /* SHConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHConstant.h; sourceTree = "<group>"; };
 		4D97D134181C3754009A1968 /* SHConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHConstant.m; sourceTree = "<group>"; };
+		C45ADFCB181EDFD100A2A807 /* SHTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHTools.h; sourceTree = "<group>"; };
+		C45ADFCC181EDFD100A2A807 /* SHTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHTools.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +187,8 @@
 		4D97D12F181C33F1009A1968 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				C45ADFCB181EDFD100A2A807 /* SHTools.h */,
+				C45ADFCC181EDFD100A2A807 /* SHTools.m */,
 				4D97D130181C3561009A1968 /* SHURLRequest.h */,
 				4D97D131181C3561009A1968 /* SHURLRequest.m */,
 				4D97D133181C3754009A1968 /* SHConstant.h */,
@@ -290,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C45ADFCD181EDFD100A2A807 /* SHTools.m in Sources */,
 				4D97D135181C3754009A1968 /* SHConstant.m in Sources */,
 				4D97D132181C3561009A1968 /* SHURLRequest.m in Sources */,
 			);
