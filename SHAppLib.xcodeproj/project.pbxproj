@@ -11,7 +11,8 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 4D97D137181C4420009A1968 /* Build configuration list for PBXAggregateTarget "SHAppIOS" */;
 			buildPhases = (
-				4D97D13A181C4467009A1968 /* ShellScript */,
+				4D97D13A181C4467009A1968 /* Run Script */,
+				C4DB3EE5181E85B0007AE943 /* Headers */,
 			);
 			dependencies = (
 			);
@@ -22,7 +23,6 @@
 
 /* Begin PBXBuildFile section */
 		4D97D10A181C30DC009A1968 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D97D109181C30DC009A1968 /* Foundation.framework */; };
-		4D97D10F181C30DC009A1968 /* SHAppLib.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D97D10E181C30DC009A1968 /* SHAppLib.h */; };
 		4D97D118181C30DD009A1968 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D97D117181C30DD009A1968 /* XCTest.framework */; };
 		4D97D119181C30DD009A1968 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D97D109181C30DC009A1968 /* Foundation.framework */; };
 		4D97D11B181C30DD009A1968 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D97D11A181C30DD009A1968 /* UIKit.framework */; };
@@ -31,8 +31,10 @@
 		4D97D126181C30DD009A1968 /* SHAppLibTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D97D125181C30DD009A1968 /* SHAppLibTests.m */; };
 		4D97D132181C3561009A1968 /* SHURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D97D131181C3561009A1968 /* SHURLRequest.m */; };
 		4D97D135181C3754009A1968 /* SHConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D97D134181C3754009A1968 /* SHConstant.m */; };
-		4D97D183181C4A29009A1968 /* SHURLRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D97D130181C3561009A1968 /* SHURLRequest.h */; };
-		4D97D184181C4A29009A1968 /* SHConstant.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D97D133181C3754009A1968 /* SHConstant.h */; };
+		4D97D183181C4A29009A1968 /* SHURLRequest.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 4D97D130181C3561009A1968 /* SHURLRequest.h */; };
+		4D97D184181C4A29009A1968 /* SHConstant.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 4D97D133181C3754009A1968 /* SHConstant.h */; };
+		C4DB3EE6181E8611007AE943 /* SHURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D97D130181C3561009A1968 /* SHURLRequest.h */; };
+		C4DB3EE7181E8611007AE943 /* SHConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D97D133181C3754009A1968 /* SHConstant.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,16 +48,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		4D97D104181C30DC009A1968 /* CopyFiles */ = {
+		4D97D104181C30DC009A1968 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				4D97D183181C4A29009A1968 /* SHURLRequest.h in CopyFiles */,
-				4D97D184181C4A29009A1968 /* SHConstant.h in CopyFiles */,
-				4D97D10F181C30DC009A1968 /* SHAppLib.h in CopyFiles */,
+				4D97D183181C4A29009A1968 /* SHURLRequest.h in Copy Files */,
+				4D97D184181C4A29009A1968 /* SHConstant.h in Copy Files */,
 			);
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C4DB3EE5181E85B0007AE943 /* Headers */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "${BUILD_DIR}/${CONFIGURATION}-universal/${PRODUCT_NAME}.framework/Headers";
+			dstSubfolderSpec = 0;
+			files = (
+				C4DB3EE6181E8611007AE943 /* SHURLRequest.h in Headers */,
+				C4DB3EE7181E8611007AE943 /* SHConstant.h in Headers */,
+			);
+			name = Headers;
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -185,7 +199,7 @@
 			buildPhases = (
 				4D97D102181C30DC009A1968 /* Sources */,
 				4D97D103181C30DC009A1968 /* Frameworks */,
-				4D97D104181C30DC009A1968 /* CopyFiles */,
+				4D97D104181C30DC009A1968 /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -254,7 +268,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4D97D13A181C4467009A1968 /* ShellScript */ = {
+		4D97D13A181C4467009A1968 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -262,11 +276,12 @@
 			inputPaths = (
 				"",
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# define output folder environment variable\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n# Step 1. Build Device and Simulator versions\nxcodebuild -target SHAppLib ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\nxcodebuild -target SHAppLib -configuration ${CONFIGURATION} -sdk iphonesimulator -arch i386 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n# Step 2. Create universal binary file using lipo\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/lib${PROJECT_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${PROJECT_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${PROJECT_NAME}.a\"\n\n# Last touch. copy the header files. Just for convenience\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/include\" \"${UNIVERSAL_OUTPUTFOLDER}/\"";
+			shellScript = "# Step 1. Build Device and Simulator versions\nxcodebuild -target ${PROJECT_NAME} ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\nxcodebuild -target ${PROJECT_NAME} -configuration ${CONFIGURATION} -sdk iphonesimulator -arch i386 BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n\nSIMULATOR_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${PROJECT_NAME}.a\" &&\nDEVICE_LIBRARY_PATH=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${PROJECT_NAME}.a\" &&\nUNIVERSAL_LIBRARY_DIR=\"${BUILD_DIR}/${CONFIGURATION}-universal\" &&\nUNIVERSAL_LIBRARY_PATH=\"${UNIVERSAL_LIBRARY_DIR}/${PRODUCT_NAME}\" &&\nFRAMEWORK=\"${UNIVERSAL_LIBRARY_DIR}/${PRODUCT_NAME}.framework\" &&\n\n# Create framework directory structure.\nrm -rf \"${FRAMEWORK}\" &&\nmkdir -p \"${UNIVERSAL_LIBRARY_DIR}\" &&\nmkdir -p \"${FRAMEWORK}/Headers\" &&\nmkdir -p \"${FRAMEWORK}/Resources\" &&\n\n# Generate universal binary for the device and simulator.\nlipo \"${SIMULATOR_LIBRARY_PATH}\" \"${DEVICE_LIBRARY_PATH}\" -create -output \"${UNIVERSAL_LIBRARY_PATH}\" &&\n\n# Move files to appropriate locations in framework paths.\ncp \"${UNIVERSAL_LIBRARY_PATH}\" \"${FRAMEWORK}/\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -475,6 +490,7 @@
 				4D97D12B181C30DD009A1968 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4D97D12C181C30DD009A1968 /* Build configuration list for PBXNativeTarget "SHAppLibTests" */ = {
 			isa = XCConfigurationList;
@@ -483,6 +499,7 @@
 				4D97D12E181C30DD009A1968 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4D97D137181C4420009A1968 /* Build configuration list for PBXAggregateTarget "SHAppIOS" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +508,7 @@
 				4D97D139181C4420009A1968 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
