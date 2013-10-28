@@ -31,8 +31,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SHURLRequest.h"
-
 @interface SHAppLib : NSObject
 
 @end
