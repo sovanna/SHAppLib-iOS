@@ -124,7 +124,8 @@
 #pragma mark -
 #pragma mark NSURLConnection delegate
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+- (void)connection:(NSURLConnection *)connection
+didReceiveResponse:(NSURLResponse *)response {
   BOOL isStatusCode = [response respondsToSelector:@selector(statusCode)];
   
   if(!isStatusCode || [(NSHTTPURLResponse *)response statusCode] != 200) {
@@ -135,11 +136,13 @@
   [self.response setLength:0];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+- (void)connection:(NSURLConnection *)connection
+    didReceiveData:(NSData *)data {
   [self.response appendData:data];
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+- (void)connection:(NSURLConnection *)connection
+  didFailWithError:(NSError *)error {
   if (self.block) self.block(error, 400);
 }
 
