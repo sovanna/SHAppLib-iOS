@@ -100,7 +100,8 @@
 
 - (void)deleteAd
 {
-    
+    self.fixedAdView = nil;
+    self.ad = nil;
 }
 
 #pragma mark - Swelen Delegate
