@@ -37,7 +37,7 @@
 @interface SHswAdAPI() <swelenDelegate>
 @property (nonatomic) AD_POSITION position;
 @property (nonatomic, weak) swAdSlot *ad;
-@property (nonatomic) UIView *viewToAddAd;
+@property (nonatomic, weak) UIView *viewToAddAd;
 @end
 
 
@@ -93,22 +93,33 @@
     return self;
 }
 
-- (void)initWithOverlaySlotID:(NSString *)slotID
+- (id)initWithOverlaySlotID:(NSString *)slotID
 {
+    self = [super init];
+    if (self) {
+        [self setSlotID:slotID];
+        
+        if (!self.slotID) {
+            [NSException
+             raise:@"Invalid entries"
+             format:@"Invalid entries - No slot id found"];
+        }
+        
+        self.ad = [[swAdMain sharedSwAd] runWithSlot:self.slotID
+                                            delegate:self];
+    }
     
+    return self;
 }
 
 - (void)deleteAd
 {
     self.fixedAdView = nil;
+    self.viewToAddAd = nil;
     self.ad = nil;
 }
 
 #pragma mark - Swelen Delegate
-
-//- (void)swAdVideoDidStartPlaying;
-//
-//- (void)swAdVideoDidStopPlaying;
 
 - (void)swAdDidFail:(swAdSlot *)slot args:(id)args
 {

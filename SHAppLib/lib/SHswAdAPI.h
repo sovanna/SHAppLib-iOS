@@ -38,14 +38,14 @@ typedef enum {
 
 @interface SHswAdAPI : NSObject
 
-@property (nonatomic, strong) UIView *fixedAdView;
-@property (nonatomic, strong) NSString *slotID;
-@property (nonatomic, strong) id<SHAdAPIDelegate> delegate;
+@property (nonatomic) UIView *fixedAdView;
+@property (nonatomic) NSString *slotID;
+@property (nonatomic) id<SHAdAPIDelegate> delegate;
 
 - (id)initWithBannerSlotID:(NSString *)slotdID
                       onView:(UIView *)view
                   toPosition:(AD_POSITION)position;
-- (void)initWithOverlaySlotID:(NSString *)slotID;
+- (id)initWithOverlaySlotID:(NSString *)slotID;
 - (void)deleteAd;
 @end
 
