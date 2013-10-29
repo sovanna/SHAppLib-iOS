@@ -1,8 +1,8 @@
 //
-//  SHConstant.m
+//  SHswAdAPI.h
 //  SHAppLib
 //
-//  Created by Sovanna Hing on 26/10/2013.
+//  Created by Sovanna Hing on 29/10/2013.
 //
 //  Copyright (c) 2013, Sovanna Hing.
 //  All rights reserved.
@@ -29,12 +29,32 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "SHConstant.h"
+typedef enum {
+    AD_POSITION_TOP = 1,
+    AD_POSITION_BOTTOM
+} AD_POSITION;
 
-NSInteger const kREQUEST_TIMEOUT = 10;
-NSInteger const kAd_IPHONE_HEIGHT = 50;
-NSInteger const kAd_IPAD_HEIGHT = 90;
+@protocol SHAdAPIDelegate;
 
-@implementation SHConstant
+@interface SHswAdAPI : NSObject
+
+@property (nonatomic, strong) UIView *fixedAdView;
+@property (nonatomic, strong) NSString *slotID;
+@property (nonatomic, strong) id<SHAdAPIDelegate> delegate;
+
+- (id)initWithBannerSlotID:(NSString *)slotdID
+                      onView:(UIView *)view
+                  toPosition:(AD_POSITION)position;
+- (void)initWithOverlaySlotID:(NSString *)slotID;
+- (void)deleteAd;
+@end
+
+@protocol SHAdAPIDelegate <NSObject>
+
+@optional
+- (void)didAdAppears;
+- (void)didAdDisappears;
+- (void)didAdMessage:(NSString *)message;
+- (void)didAdClosed;
 
 @end

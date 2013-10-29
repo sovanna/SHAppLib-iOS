@@ -30,6 +30,8 @@
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 extern NSInteger const kREQUEST_TIMEOUT;
+extern NSInteger const kAd_IPHONE_HEIGHT;
+extern NSInteger const kAd_IPAD_HEIGHT;
 
 @interface SHConstant : NSObject
 
