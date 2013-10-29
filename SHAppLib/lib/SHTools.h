@@ -34,5 +34,6 @@
 + (BOOL)isIphone5;
 + (BOOL)isIphone;
 + (BOOL)isIpad;
++ (BOOL)isIOS7;
 
 @end

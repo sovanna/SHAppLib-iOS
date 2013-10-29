@@ -56,4 +56,11 @@
     return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad);
 }
 
++ (BOOL)isIOS7
+{
+    NSString *version = [[UIDevice currentDevice] systemVersion];
+    int v = [version intValue];
+    return (v < 7 ? false : true);
+}
+
 @end
