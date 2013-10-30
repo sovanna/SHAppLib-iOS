@@ -144,11 +144,20 @@
             break;
 	}
     
+    slot = nil;
     [self deleteAd];
     
     if (self.delegate &&
         [self.delegate respondsToSelector:@selector(didAdMessage:)]) {
         [self.delegate didAdMessage:message];
+    }
+}
+
+- (void)swAdDidReceiveClick:(swAdSlot *)slot args:(id)args
+{
+    if (self.delegate &&
+        [self.delegate respondsToSelector:@selector(didAdClick)]) {
+        [self.delegate didAdClick];
     }
 }
 

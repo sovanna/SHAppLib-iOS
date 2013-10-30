@@ -55,5 +55,6 @@ typedef enum {
 - (void)didAdAppears;
 - (void)didAdMessage:(NSString *)message;
 - (void)didAdClosed;
+- (void)didAdClick;
 
 @end
