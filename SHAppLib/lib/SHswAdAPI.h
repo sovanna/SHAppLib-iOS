@@ -38,7 +38,7 @@ typedef enum {
 
 @interface SHswAdAPI : NSObject
 
-@property (nonatomic) UIView *fixedAdView;
+@property (nonatomic, weak) UIView *fixedAdView;
 @property (nonatomic) NSString *slotID;
 @property (nonatomic) id<SHAdAPIDelegate> delegate;
 
@@ -53,7 +53,6 @@ typedef enum {
 
 @optional
 - (void)didAdAppears;
-- (void)didAdDisappears;
 - (void)didAdMessage:(NSString *)message;
 - (void)didAdClosed;
 

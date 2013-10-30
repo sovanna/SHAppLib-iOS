@@ -36,8 +36,6 @@
 
 @interface SHswAdAPI() <swelenDelegate>
 @property (nonatomic) AD_POSITION position;
-@property (nonatomic, weak) swAdSlot *ad;
-@property (nonatomic, weak) UIView *viewToAddAd;
 @end
 
 
@@ -46,8 +44,8 @@
 @synthesize fixedAdView = _fixedAdView;
 @synthesize slotID = _slotID;
 @synthesize delegate = _delegate;
+
 @synthesize position = _position;
-@synthesize viewToAddAd = _viewToAddAd;
 
 - (id)initWithBannerSlotID:(NSString *)slotdID
                       onView:(UIView *)view
@@ -56,10 +54,9 @@
     self = [super init];
     if (self) {
         [self setSlotID:slotdID];
-        [self setViewToAddAd:view];
         [self setPosition:position];
         
-        if (!self.slotID || !self.viewToAddAd || self.position == 0) {
+        if (!self.slotID || !view || self.position == 0) {
             [NSException
              raise:@"Invalid entries"
              format:@"Invalid entries - All param have to be set and valid"];
@@ -70,7 +67,7 @@
         
         NSInteger posY = 0;
         if (AD_POSITION_BOTTOM) {
-            posY = self.viewToAddAd.frame.size.height - kAd_IPHONE_HEIGHT;
+            posY = view.frame.size.height - kAd_IPHONE_HEIGHT;
         }
         
         CGRect frame = CGRectMake(0,
@@ -78,16 +75,17 @@
                                   [UIScreen mainScreen].bounds.size.width,
                                   (CGFloat)height);
         
-        self.fixedAdView = [[UIView alloc] initWithFrame:frame];
+        UIView *viewAd = [[UIView alloc] initWithFrame:frame];
+        [self setFixedAdView:viewAd];
         [self.fixedAdView setHidden:YES];
         
         // ADD AD VIEW TO THE DESIRED VIEW 
-        [self.viewToAddAd addSubview:self.fixedAdView];
+        [view addSubview:self.fixedAdView];
         
         // LAUNCH Swelen SDK
-        self.ad = [[swAdMain sharedSwAd] runWithSlot:self.slotID
-                                            delegate:self
-                                            attachTo:self.fixedAdView];
+        [[swAdMain sharedSwAd] runWithSlot:self.slotID
+                                  delegate:self
+                                  attachTo:self.fixedAdView];
     }
     
     return self;
@@ -105,8 +103,7 @@
              format:@"Invalid entries - No slot id found"];
         }
         
-        self.ad = [[swAdMain sharedSwAd] runWithSlot:self.slotID
-                                            delegate:self];
+        [[swAdMain sharedSwAd] runWithSlot:self.slotID delegate:self];
     }
     
     return self;
@@ -115,8 +112,6 @@
 - (void)deleteAd
 {
     self.fixedAdView = nil;
-    self.viewToAddAd = nil;
-    self.ad = nil;
 }
 
 #pragma mark - Swelen Delegate
@@ -149,22 +144,19 @@
             break;
 	}
     
+    [self deleteAd];
+    
     if (self.delegate &&
         [self.delegate respondsToSelector:@selector(didAdMessage:)]) {
         [self.delegate didAdMessage:message];
-    }
-    
-    if (self.delegate &&
-        [self.delegate respondsToSelector:@selector(didAdDisappears)]) {
-        [self.delegate didAdDisappears];
     }
 }
 
 - (void)swAdDidClose:(swAdSlot *)slot args:(id)args
 {
     if (self.delegate &&
-        [self.delegate respondsToSelector:@selector(didAdDisappears)]) {
-        [self.delegate didAdDisappears];
+        [self.delegate respondsToSelector:@selector(didAdClosed)]) {
+        [self.delegate didAdClosed];
     }
 }
 
