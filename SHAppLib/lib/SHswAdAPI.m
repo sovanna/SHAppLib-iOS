@@ -36,6 +36,7 @@
 
 @interface SHswAdAPI() <swelenDelegate>
 @property (nonatomic) AD_POSITION position;
+@property (nonatomic) swAdSlot *ad;
 @end
 
 
@@ -46,6 +47,7 @@
 @synthesize delegate = _delegate;
 
 @synthesize position = _position;
+@synthesize ad = _ad;
 
 - (id)initWithBannerSlotID:(NSString *)slotdID
                       onView:(UIView *)view
@@ -66,8 +68,10 @@
         NSInteger height = [SHTools isIphone] ? kAd_IPHONE_HEIGHT : kAd_IPAD_HEIGHT;
         
         NSInteger posY = 0;
-        if (AD_POSITION_BOTTOM) {
+        if ([SHTools isIphone] && self.position == AD_POSITION_BOTTOM) {
             posY = view.frame.size.height - kAd_IPHONE_HEIGHT;
+        } else if ([SHTools isIpad] && self.position == AD_POSITION_BOTTOM) {
+            posY = view.frame.size.height - kAd_IPAD_HEIGHT;
         }
         
         CGRect frame = CGRectMake(0,
@@ -83,9 +87,9 @@
         [view addSubview:self.fixedAdView];
         
         // LAUNCH Swelen SDK
-        [[swAdMain sharedSwAd] runWithSlot:self.slotID
-                                  delegate:self
-                                  attachTo:self.fixedAdView];
+        self.ad = [[swAdMain sharedSwAd] runWithSlot:self.slotID
+                                            delegate:self
+                                            attachTo:self.fixedAdView];
     }
     
     return self;
@@ -103,7 +107,7 @@
              format:@"Invalid entries - No slot id found"];
         }
         
-        [[swAdMain sharedSwAd] runWithSlot:self.slotID delegate:self];
+        self.ad = [[swAdMain sharedSwAd] runWithSlot:self.slotID delegate:self];
     }
     
     return self;

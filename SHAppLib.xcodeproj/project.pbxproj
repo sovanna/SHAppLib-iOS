@@ -35,9 +35,6 @@
 		4D97D184181C4A29009A1968 /* SHConstant.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 4D97D133181C3754009A1968 /* SHConstant.h */; };
 		C45ADFCD181EDFD100A2A807 /* SHTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C45ADFCC181EDFD100A2A807 /* SHTools.m */; };
 		C4D4A853181EE04300AF461A /* SHTools.h in Headers */ = {isa = PBXBuildFile; fileRef = C45ADFCB181EDFD100A2A807 /* SHTools.h */; };
-		C4D4A879181FF4BF00AF461A /* SHswAdAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D4A878181FF4BF00AF461A /* SHswAdAPI.m */; };
-		C4D4A87E181FF95600AF461A /* libswAdLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4D4A87C181FF95600AF461A /* libswAdLib.a */; };
-		C4D4A87F1820042E00AF461A /* SHswAdAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = C4D4A877181FF4BF00AF461A /* SHswAdAPI.h */; };
 		C4DB3EE6181E8611007AE943 /* SHURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D97D130181C3561009A1968 /* SHURLRequest.h */; };
 		C4DB3EE7181E8611007AE943 /* SHConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D97D133181C3754009A1968 /* SHConstant.h */; };
 /* End PBXBuildFile section */
@@ -71,7 +68,6 @@
 			dstPath = "${BUILD_DIR}/${CONFIGURATION}-universal/${PRODUCT_NAME}.framework/Headers";
 			dstSubfolderSpec = 0;
 			files = (
-				C4D4A87F1820042E00AF461A /* SHswAdAPI.h in Headers */,
 				C4D4A853181EE04300AF461A /* SHTools.h in Headers */,
 				C4DB3EE6181E8611007AE943 /* SHURLRequest.h in Headers */,
 				C4DB3EE7181E8611007AE943 /* SHConstant.h in Headers */,
@@ -98,10 +94,6 @@
 		4D97D134181C3754009A1968 /* SHConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHConstant.m; sourceTree = "<group>"; };
 		C45ADFCB181EDFD100A2A807 /* SHTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHTools.h; sourceTree = "<group>"; };
 		C45ADFCC181EDFD100A2A807 /* SHTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHTools.m; sourceTree = "<group>"; };
-		C4D4A877181FF4BF00AF461A /* SHswAdAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHswAdAPI.h; sourceTree = "<group>"; };
-		C4D4A878181FF4BF00AF461A /* SHswAdAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHswAdAPI.m; sourceTree = "<group>"; };
-		C4D4A87C181FF95600AF461A /* libswAdLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswAdLib.a; sourceTree = "<group>"; };
-		C4D4A87D181FF95600AF461A /* swAdAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swAdAPI.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +101,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4D4A87E181FF95600AF461A /* libswAdLib.a in Frameworks */,
 				4D97D10A181C30DC009A1968 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -203,8 +194,6 @@
 				4D97D131181C3561009A1968 /* SHURLRequest.m */,
 				4D97D133181C3754009A1968 /* SHConstant.h */,
 				4D97D134181C3754009A1968 /* SHConstant.m */,
-				C4D4A877181FF4BF00AF461A /* SHswAdAPI.h */,
-				C4D4A878181FF4BF00AF461A /* SHswAdAPI.m */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -212,19 +201,8 @@
 		C4D4A87A181FF92C00AF461A /* externalLib */ = {
 			isa = PBXGroup;
 			children = (
-				C4D4A87B181FF95600AF461A /* SwelenSDK */,
 			);
 			path = externalLib;
-			sourceTree = "<group>";
-		};
-		C4D4A87B181FF95600AF461A /* SwelenSDK */ = {
-			isa = PBXGroup;
-			children = (
-				C4D4A87C181FF95600AF461A /* libswAdLib.a */,
-				C4D4A87D181FF95600AF461A /* swAdAPI.h */,
-			);
-			name = SwelenSDK;
-			path = "../../../../resources/ios-lib/SwelenSDK";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,7 +307,6 @@
 			files = (
 				C45ADFCD181EDFD100A2A807 /* SHTools.m in Sources */,
 				4D97D135181C3754009A1968 /* SHConstant.m in Sources */,
-				C4D4A879181FF4BF00AF461A /* SHswAdAPI.m in Sources */,
 				4D97D132181C3561009A1968 /* SHURLRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,7 +345,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -406,7 +383,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -437,13 +414,11 @@
 		4D97D12A181C30DD009A1968 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = /tmp/SHAppLib.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SHAppLib/SHAppLib-Prefix.pch";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/sovannahing/Documents/resources/ios-lib/SwelenSDK",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -453,13 +428,11 @@
 		4D97D12B181C30DD009A1968 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = /tmp/SHAppLib.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SHAppLib/SHAppLib-Prefix.pch";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/sovannahing/Documents/resources/ios-lib/SwelenSDK",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
