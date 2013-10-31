@@ -151,7 +151,6 @@
 		4D97D10B181C30DC009A1968 /* SHAppLib */ = {
 			isa = PBXGroup;
 			children = (
-				C4D4A87A181FF92C00AF461A /* externalLib */,
 				4D97D12F181C33F1009A1968 /* lib */,
 				4D97D10E181C30DC009A1968 /* SHAppLib.h */,
 				4D97D10C181C30DC009A1968 /* Supporting Files */,
@@ -196,13 +195,6 @@
 				4D97D134181C3754009A1968 /* SHConstant.m */,
 			);
 			path = lib;
-			sourceTree = "<group>";
-		};
-		C4D4A87A181FF92C00AF461A /* externalLib */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = externalLib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
