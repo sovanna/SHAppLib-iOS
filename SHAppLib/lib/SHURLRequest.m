@@ -33,9 +33,9 @@
 #import "SHConstant.h"
 
 @interface SHURLRequest()<NSURLConnectionDelegate>
-@property (nonatomic, strong) NSString *url;
-@property (nonatomic, strong) NSMutableData *response;
-@property (nonatomic, strong) id params;
+@property (nonatomic) NSString *url;
+@property (nonatomic) NSMutableData *response;
+@property (nonatomic) id params;
 @property (nonatomic, strong) SHURLRequestCompletionHandler block;
 
 + (SHURLRequest *)initRequestURL:(NSString *)url
@@ -105,6 +105,8 @@
        self.params];
     }
     
+    NSLog(@"SHURLRequest.m | [url called]=> %@", self.url);
+    
     NSURL *url = [NSURL URLWithString:self.url];
     NSURLRequest *request = [NSURLRequest
                              requestWithURL:url
@@ -118,7 +120,7 @@
 
 - (void)postRequest
 {
-  
+//  TODO
 }
 
 #pragma mark -

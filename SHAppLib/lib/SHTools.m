@@ -35,32 +35,43 @@
 
 + (BOOL)isIphone5
 {
-    BOOL isTrue = NO;
-    
+    UIScreen * __weak screen = [UIScreen mainScreen];
     if ([[self class] isIphone] &&
-        [UIScreen mainScreen].scale == 2.f &&
-        [UIScreen mainScreen].bounds.size.height == 568) {
-        isTrue = YES;
+        screen.scale == 2.f &&
+        screen.bounds.size.height == 568) {
+        return YES;
     }
-    
-    return isTrue;
+    return NO;
 }
 
 + (BOOL)isIphone
 {
-    return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
+    UIDevice * __weak device = [UIDevice currentDevice];
+    return ([device userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
 }
 
 + (BOOL)isIpad
 {
-    return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad);
+    UIDevice * __weak device = [UIDevice currentDevice];
+    return ([device userInterfaceIdiom] == UIUserInterfaceIdiomPad);
 }
 
 + (BOOL)isIOS7
 {
-    NSString *version = [[UIDevice currentDevice] systemVersion];
-    int v = [version intValue];
+    UIDevice * __weak device = [UIDevice currentDevice];
+    int v = [[device systemVersion] intValue];
     return (v < 7 ? false : true);
+}
+
++ (NSString *)stringFromObject:(id)object
+{
+    return [NSString stringWithFormat:@"%@", object];
+}
+
++ (NSString *)encodedObject:(id)object
+{
+    NSString * __weak string = [SHTools stringFromObject:object];
+    return [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 
 @end

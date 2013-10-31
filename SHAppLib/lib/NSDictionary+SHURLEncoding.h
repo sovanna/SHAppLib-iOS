@@ -1,8 +1,8 @@
 //
-//  SHTools.h
+//  NSDictionary+SHURLEncoding.h
 //  SHAppLib
 //
-//  Created by Sovanna Hing on 28/10/2013.
+//  Created by Sovanna Hing on 31/10/2013.
 //
 //  Copyright (c) 2013, Sovanna Hing.
 //  All rights reserved.
@@ -29,13 +29,8 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-@interface SHTools : NSObject
+@interface NSDictionary (SHURLEncoding)
 
-+ (BOOL)isIphone5;
-+ (BOOL)isIphone;
-+ (BOOL)isIpad;
-+ (BOOL)isIOS7;
-+ (NSString *)stringFromObject:(id)object;
-+ (NSString *)encodedObject:(id)object;
+- (NSString *)urlEncodedString;
 
 @end
