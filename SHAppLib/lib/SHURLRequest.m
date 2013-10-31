@@ -105,7 +105,7 @@
        self.params];
     }
     
-    NSLog(@"SHURLRequest.m | [url called]=> %@", self.url);
+    NSLog(@"SHURLRequest.m | [url called] ~> %@", self.url);
     
     NSURL *url = [NSURL URLWithString:self.url];
     NSURLRequest *request = [NSURLRequest
