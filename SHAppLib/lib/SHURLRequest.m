@@ -59,22 +59,22 @@
       withParams:(id)params
    andCompletion:(SHURLRequestCompletionHandler)block
 {
-  SHURLRequest *urlRequest = [SHURLRequest initRequestURL:url
-                                               withParams:params
-                                            andCompletion:block];
-  [urlRequest getRequest];
-  return urlRequest;
+    SHURLRequest *urlRequest = [SHURLRequest initRequestURL:url
+                                                 withParams:params
+                                              andCompletion:block];
+    [urlRequest getRequest];
+    return urlRequest;
 }
 
 + (id)postToURL:(NSString *)url
      withParams:(id)params
   andCompletion:(SHURLRequestCompletionHandler)block
 {
-  SHURLRequest *urlRequest = [SHURLRequest initRequestURL:url
-                                               withParams:params
-                                            andCompletion:block];
-  [urlRequest postRequest];
-  return urlRequest;
+    SHURLRequest *urlRequest = [SHURLRequest initRequestURL:url
+                                                 withParams:params
+                                              andCompletion:block];
+    [urlRequest postRequest];
+    return urlRequest;
 }
 
 #pragma mark -
@@ -84,38 +84,38 @@
                       withParams:(id)params
                    andCompletion:(SHURLRequestCompletionHandler)block
 {
-  SHURLRequest *urlRequest = [[[self class] alloc] init];
-  [urlRequest setUrl:url];
-  [urlRequest setResponse:[[NSMutableData alloc] init]];
-  [urlRequest setParams:params];
-  [urlRequest setBlock:block];
+    SHURLRequest *urlRequest = [[[self class] alloc] init];
+    [urlRequest setUrl:url];
+    [urlRequest setResponse:[[NSMutableData alloc] init]];
+    [urlRequest setParams:params];
+    [urlRequest setBlock:block];
   
-  return urlRequest;
+    return urlRequest;
 }
 
 - (void)getRequest
 {
-  if (self.url) {
-    if (self.params && [self.params isKindOfClass:[NSString class]]) {
-      self.url = [NSString stringWithFormat:@"%@?%@", self.url, self.params];
-    } else if (self.params) {
-      [NSException
-       raise:@"Invalid params value"
-       format:@"params of %@ is invalid, must be param1=value1&param2=value2",
-       self.params];
+    if (self.url) {
+        if (self.params && [self.params isKindOfClass:[NSString class]]) {
+            self.url = [NSString stringWithFormat:@"%@?%@", self.url, self.params];
+        } else if (self.params) {
+            [NSException
+             raise:@"Invalid params value"
+             format:@"params of %@ is invalid, must be param1=value1&param2=value2",
+             self.params];
+        }
+    
+        NSLog(@"SHURLRequest.m | [url called] ~> %@", self.url);
+    
+        NSURL *url = [NSURL URLWithString:self.url];
+        NSURLRequest *request = [NSURLRequest
+                                 requestWithURL:url
+                                 cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                 timeoutInterval:kREQUEST_TIMEOUT];
+        [NSURLConnection connectionWithRequest:request delegate:self];
+    } else {
+        if (self.block) self.block(nil, 400);
     }
-    
-    NSLog(@"SHURLRequest.m | [url called] ~> %@", self.url);
-    
-    NSURL *url = [NSURL URLWithString:self.url];
-    NSURLRequest *request = [NSURLRequest
-                             requestWithURL:url
-                             cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
-                             timeoutInterval:kREQUEST_TIMEOUT];
-    [NSURLConnection connectionWithRequest:request delegate:self];
-  } else {
-    if (self.block) self.block(nil, 400);
-  }
 }
 
 - (void)postRequest
@@ -128,28 +128,30 @@
 
 - (void)connection:(NSURLConnection *)connection
 didReceiveResponse:(NSURLResponse *)response {
-  BOOL isStatusCode = [response respondsToSelector:@selector(statusCode)];
+    BOOL isStatusCode = [response respondsToSelector:@selector(statusCode)];
+    
+    if(!isStatusCode) {
+        [connection cancel];
+        if (self.block) self.block(response, 500);
+    } else if ([(NSHTTPURLResponse *)response statusCode] != 200) {
+        if (self.block) self.block(response, [(NSHTTPURLResponse *)response statusCode]);
+    }
   
-  if(!isStatusCode || [(NSHTTPURLResponse *)response statusCode] != 200) {
-    [connection cancel];
-    if (self.block) self.block(response, 500);
-  }
-  
-  [self.response setLength:0];
+    [self.response setLength:0];
 }
 
 - (void)connection:(NSURLConnection *)connection
     didReceiveData:(NSData *)data {
-  [self.response appendData:data];
+    self.response appendData:data];
 }
 
 - (void)connection:(NSURLConnection *)connection
-  didFailWithError:(NSError *)error {
-  if (self.block) self.block(error, 400);
+    didFailWithError:(NSError *)error {
+    if (self.block) self.block(error, 400);
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-  if (self.block) self.block(self.response, 200);
+    if (self.block) self.block(self.response, 200);
 }
 
 @end
