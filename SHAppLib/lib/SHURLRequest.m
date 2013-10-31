@@ -142,7 +142,7 @@ didReceiveResponse:(NSURLResponse *)response {
 
 - (void)connection:(NSURLConnection *)connection
     didReceiveData:(NSData *)data {
-    self.response appendData:data];
+    [self.response appendData:data];
 }
 
 - (void)connection:(NSURLConnection *)connection
