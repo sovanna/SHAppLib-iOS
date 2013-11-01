@@ -98,7 +98,7 @@
 - (void)getRequest
 {
     if (self.url) {
-        NSLog(@"SHURLRequest.m | [url called] ~> %@", self.url);
+        Log(@"SHURLRequest.m | [url called] ~> %@", self.url);
     
         NSURL *url = [NSURL URLWithString:self.url];
         NSURLRequest *request = [NSURLRequest
