@@ -34,10 +34,8 @@
 		4D97D183181C4A29009A1968 /* SHURLRequest.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 4D97D130181C3561009A1968 /* SHURLRequest.h */; };
 		4D97D184181C4A29009A1968 /* SHConstant.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 4D97D133181C3754009A1968 /* SHConstant.h */; };
 		C45ADFCD181EDFD100A2A807 /* SHTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C45ADFCC181EDFD100A2A807 /* SHTools.m */; };
-		C49DEFCF1822CA4D00889F96 /* NSDictionary+SHURLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = C49DEFCD1822CA4D00889F96 /* NSDictionary+SHURLEncoding.h */; };
-		C49DEFD01822CA4D00889F96 /* NSDictionary+SHURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = C49DEFCE1822CA4D00889F96 /* NSDictionary+SHURLEncoding.m */; };
 		C49DEFD21822D5E600889F96 /* SHTools.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C45ADFCB181EDFD100A2A807 /* SHTools.h */; };
-		C49DEFD31822D5EB00889F96 /* NSDictionary+SHURLEncoding.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C49DEFCD1822CA4D00889F96 /* NSDictionary+SHURLEncoding.h */; };
+		C49DEFD61824313400889F96 /* NSString+StringEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = C49DEFD51824313400889F96 /* NSString+StringEncoding.m */; };
 		C4D4A853181EE04300AF461A /* SHTools.h in Headers */ = {isa = PBXBuildFile; fileRef = C45ADFCB181EDFD100A2A807 /* SHTools.h */; };
 		C4DB3EE6181E8611007AE943 /* SHURLRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D97D130181C3561009A1968 /* SHURLRequest.h */; };
 		C4DB3EE7181E8611007AE943 /* SHConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D97D133181C3754009A1968 /* SHConstant.h */; };
@@ -60,7 +58,6 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				C49DEFD31822D5EB00889F96 /* NSDictionary+SHURLEncoding.h in Copy Files */,
 				C49DEFD21822D5E600889F96 /* SHTools.h in Copy Files */,
 				4D97D183181C4A29009A1968 /* SHURLRequest.h in Copy Files */,
 				4D97D184181C4A29009A1968 /* SHConstant.h in Copy Files */,
@@ -75,7 +72,6 @@
 			dstSubfolderSpec = 0;
 			files = (
 				C4D4A853181EE04300AF461A /* SHTools.h in Headers */,
-				C49DEFCF1822CA4D00889F96 /* NSDictionary+SHURLEncoding.h in Headers */,
 				C4DB3EE6181E8611007AE943 /* SHURLRequest.h in Headers */,
 				C4DB3EE7181E8611007AE943 /* SHConstant.h in Headers */,
 			);
@@ -101,8 +97,8 @@
 		4D97D134181C3754009A1968 /* SHConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHConstant.m; sourceTree = "<group>"; };
 		C45ADFCB181EDFD100A2A807 /* SHTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHTools.h; sourceTree = "<group>"; };
 		C45ADFCC181EDFD100A2A807 /* SHTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHTools.m; sourceTree = "<group>"; };
-		C49DEFCD1822CA4D00889F96 /* NSDictionary+SHURLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SHURLEncoding.h"; sourceTree = "<group>"; };
-		C49DEFCE1822CA4D00889F96 /* NSDictionary+SHURLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SHURLEncoding.m"; sourceTree = "<group>"; };
+		C49DEFD41824313400889F96 /* NSString+StringEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StringEncoding.h"; sourceTree = "<group>"; };
+		C49DEFD51824313400889F96 /* NSString+StringEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StringEncoding.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,8 +198,8 @@
 				4D97D131181C3561009A1968 /* SHURLRequest.m */,
 				4D97D133181C3754009A1968 /* SHConstant.h */,
 				4D97D134181C3754009A1968 /* SHConstant.m */,
-				C49DEFCD1822CA4D00889F96 /* NSDictionary+SHURLEncoding.h */,
-				C49DEFCE1822CA4D00889F96 /* NSDictionary+SHURLEncoding.m */,
+				C49DEFD41824313400889F96 /* NSString+StringEncoding.h */,
+				C49DEFD51824313400889F96 /* NSString+StringEncoding.m */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -309,8 +305,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C45ADFCD181EDFD100A2A807 /* SHTools.m in Sources */,
+				C49DEFD61824313400889F96 /* NSString+StringEncoding.m in Sources */,
 				4D97D135181C3754009A1968 /* SHConstant.m in Sources */,
-				C49DEFD01822CA4D00889F96 /* NSDictionary+SHURLEncoding.m in Sources */,
 				4D97D132181C3561009A1968 /* SHURLRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
