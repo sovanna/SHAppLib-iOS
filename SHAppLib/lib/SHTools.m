@@ -68,10 +68,15 @@
     return [NSString stringWithFormat:@"%@", object];
 }
 
-+ (NSString *)encodedObject:(id)object
++ (NSString *)stringKeyValueFromDictionary:(NSDictionary *)dic
 {
-    NSString * __weak string = [SHTools stringFromObject:object];
-    return [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSMutableArray *tmp = [NSMutableArray array];
+    for (id key in dic) {
+        NSString *kv = [NSString stringWithFormat:@"%@=%@",
+                        key, [dic objectForKey:key]]);
+        [tmp addObject:kv];
+    }
+    return [tmp componentsJoinedByString:@"&"];
 }
 
 @end
