@@ -35,7 +35,6 @@ typedef void(^SHURLRequestCompletionHandler)(id data, int status);
 @interface SHURLRequest : NSObject
 
 + (SHURLRequest *)getFromURL:(NSString *)url
-                  withParams:(id)params
                andCompletion:(SHURLRequestCompletionHandler)block;
 
 + (SHURLRequest *)postToURL:(NSString *)url

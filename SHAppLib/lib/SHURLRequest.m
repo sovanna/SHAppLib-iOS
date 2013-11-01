@@ -56,7 +56,6 @@
 #pragma mark Public Static Initializer
 
 + (id)getFromURL:(NSString *)url
-      withParams:(id)params
    andCompletion:(SHURLRequestCompletionHandler)block
 {
     SHURLRequest *urlRequest = [SHURLRequest initRequestURL:url
@@ -93,18 +92,12 @@
     return urlRequest;
 }
 
+#pragma mark -
+#pragma mark Request
+
 - (void)getRequest
 {
     if (self.url) {
-        if (self.params && [self.params isKindOfClass:[NSString class]]) {
-            self.url = [NSString stringWithFormat:@"%@?%@", self.url, self.params];
-        } else if (self.params) {
-            [NSException
-             raise:@"Invalid params value"
-             format:@"params of %@ is invalid, must be param1=value1&param2=value2",
-             self.params];
-        }
-    
         NSLog(@"SHURLRequest.m | [url called] ~> %@", self.url);
     
         NSURL *url = [NSURL URLWithString:self.url];
