@@ -1,8 +1,8 @@
 //
-//  NSDictionary+SHURLEncoding.m
+//  NSString+StringEncoding.h
 //  SHAppLib
 //
-//  Created by Sovanna Hing on 31/10/2013.
+//  Created by Sovanna Hing on 01/10/2013.
 //
 //  Copyright (c) 2013, Sovanna Hing.
 //  All rights reserved.
@@ -29,24 +29,6 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "NSDictionary+SHURLEncoding.h"
-#import "SHTools.h"
-
-@implementation NSDictionary (SHURLEncoding)
-
-- (NSString *)urlEncodedString
-{
-    NSMutableArray *keyVal = [NSMutableArray array];
-    for (id key in self) {
-        id value = [self objectForKey:key];
-         NSString *stringKeyVal = [NSString
-                                   stringWithFormat:@"%@=%@",
-                                   [SHTools encodedObject:key],
-                                   [SHTools encodedObject:value]];
-        [keyVal addObject:stringKeyVal];
-    }
-    
-    return [keyVal componentsJoinedByString:@"&"];
-}
-
+@interface NSString (StringEncoding)
+- (NSString *)stringEncode;
 @end

@@ -1,8 +1,8 @@
 //
-//  NSDictionary+SHURLEncoding.h
+//  NSString+StringEncoding.m
 //  SHAppLib
 //
-//  Created by Sovanna Hing on 31/10/2013.
+//  Created by Sovanna Hing on 01/10/2013.
 //
 //  Copyright (c) 2013, Sovanna Hing.
 //  All rights reserved.
@@ -29,8 +29,17 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-@interface NSDictionary (SHURLEncoding)
+#import "NSString+StringEncoding.h"
 
-- (NSString *)urlEncodedString;
-
+@implementation NSString (StringEncoding)
+- (NSString *)stringEncode
+{
+    CFStringRef encodedString =
+    CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                            (CFStringRef)self,
+                                            NULL,
+                                            CFSTR("!*'\"();:@&=+$,/?%#[]% "),
+                                            kCFStringEncodingUTF8);
+	return (NSString *)CFBridgingRelease(encodedString);
+}
 @end
