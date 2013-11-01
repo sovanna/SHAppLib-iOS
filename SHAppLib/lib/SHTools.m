@@ -30,6 +30,7 @@
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "SHTools.h"
+#import "NSString+StringEncoding.h"
 
 @implementation SHTools
 
@@ -77,10 +78,27 @@
     NSMutableArray *tmp = [NSMutableArray array];
     for (id key in dic) {
         NSString *kv = [NSString stringWithFormat:@"%@=%@",
-                        key, [dic objectForKey:key]]);
+                        key, [dic objectForKey:key]];
         [tmp addObject:kv];
     }
     return [tmp componentsJoinedByString:@"&"];
+}
+
++ (NSString *)stringEncodedParamsFromDictionary:(NSDictionary *)dic
+{
+    NSError * __autoreleasing error;
+    NSData *data = [NSJSONSerialization
+                    dataWithJSONObject:dic
+                    options:NSJSONWritingPrettyPrinted
+                    error:&error];
+    if (!data) {
+        [NSException raise:[error debugDescription]
+                    format:@"Make sure that your json object is valid"];
+    }
+    
+    NSString *string = [[NSString alloc] initWithData:data
+                                             encoding:NSUTF8StringEncoding];
+    return [string stringEncode];
 }
 
 @end
