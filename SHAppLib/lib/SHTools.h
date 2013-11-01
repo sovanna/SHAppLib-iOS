@@ -40,4 +40,5 @@
 + (NSString *)stringKeyValueFromDictionary:(NSDictionary *)dic;
 + (NSString *)stringEncodedParamsFromDictionary:(NSDictionary *)dic;
 
++ (NSDictionary *)jsonFromData:(id)data;
 @end

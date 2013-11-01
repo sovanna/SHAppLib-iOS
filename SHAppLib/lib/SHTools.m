@@ -101,4 +101,22 @@
     return [string stringEncode];
 }
 
+#pragma mark - json
+
++ (NSDictionary *)jsonFromData:(id)data
+{
+    NSError * __autoreleasing error = nil;
+    NSDictionary *json = [NSJSONSerialization
+                          JSONObjectWithData:data
+                          options:NSJSONReadingMutableContainers
+                          error:&error];
+    if (json && [json isKindOfClass:[NSDictionary class]]) {
+        return json;
+    } else {
+        [NSException raise:[error debugDescription] format:nil];
+    }
+    
+    return nil;
+}
+
 @end
