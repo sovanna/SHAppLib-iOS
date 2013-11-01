@@ -38,5 +38,6 @@
 
 + (NSString *)stringFromObject:(id)object;
 + (NSString *)stringKeyValueFromDictionary:(NSDictionary *)dic;
++ (NSString *)stringEncodedParamsFromDictionary:(NSDictionary *)dic;
 
 @end
