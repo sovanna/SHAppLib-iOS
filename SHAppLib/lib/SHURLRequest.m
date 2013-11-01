@@ -59,7 +59,7 @@
    andCompletion:(SHURLRequestCompletionHandler)block
 {
     SHURLRequest *urlRequest = [SHURLRequest initRequestURL:url
-                                                 withParams:params
+                                                 withParams:nil
                                               andCompletion:block];
     [urlRequest getRequest];
     return urlRequest;
@@ -84,10 +84,10 @@
                    andCompletion:(SHURLRequestCompletionHandler)block
 {
     SHURLRequest *urlRequest = [[[self class] alloc] init];
-    [urlRequest setUrl:url];
     [urlRequest setResponse:[[NSMutableData alloc] init]];
-    [urlRequest setParams:params];
-    [urlRequest setBlock:block];
+    if (url) [urlRequest setUrl:url];
+    if (params) [urlRequest setParams:params];
+    if (block) [urlRequest setBlock:block];
   
     return urlRequest;
 }
