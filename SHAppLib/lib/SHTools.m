@@ -33,6 +33,8 @@
 
 @implementation SHTools
 
+#pragma mark - device
+
 + (BOOL)isIphone5
 {
     UIScreen * __weak screen = [UIScreen mainScreen];
@@ -62,6 +64,8 @@
     int v = [[device systemVersion] intValue];
     return (v < 7 ? false : true);
 }
+
+#pragma mark - string
 
 + (NSString *)stringFromObject:(id)object
 {

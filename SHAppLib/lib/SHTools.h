@@ -35,6 +35,7 @@
 + (BOOL)isIphone;
 + (BOOL)isIpad;
 + (BOOL)isIOS7;
+
 + (NSString *)stringFromObject:(id)object;
 + (NSString *)stringKeyValueFromDictionary:(NSDictionary *)dic;
 
