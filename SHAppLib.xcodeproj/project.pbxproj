@@ -34,6 +34,7 @@
 		4D97D183181C4A29009A1968 /* SHURLRequest.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 4D97D130181C3561009A1968 /* SHURLRequest.h */; };
 		4D97D184181C4A29009A1968 /* SHConstant.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 4D97D133181C3754009A1968 /* SHConstant.h */; };
 		C45ADFCD181EDFD100A2A807 /* SHTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C45ADFCC181EDFD100A2A807 /* SHTools.m */; };
+		C470BDCF183CB9F400AB837B /* NSString+StringEncoding.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C49DEFD41824313400889F96 /* NSString+StringEncoding.h */; };
 		C49DEFD21822D5E600889F96 /* SHTools.h in Copy Files */ = {isa = PBXBuildFile; fileRef = C45ADFCB181EDFD100A2A807 /* SHTools.h */; };
 		C49DEFD61824313400889F96 /* NSString+StringEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = C49DEFD51824313400889F96 /* NSString+StringEncoding.m */; };
 		C49DEFD71824348000889F96 /* NSString+StringEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = C49DEFD41824313400889F96 /* NSString+StringEncoding.h */; };
@@ -59,6 +60,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				C470BDCF183CB9F400AB837B /* NSString+StringEncoding.h in Copy Files */,
 				C49DEFD21822D5E600889F96 /* SHTools.h in Copy Files */,
 				4D97D183181C4A29009A1968 /* SHURLRequest.h in Copy Files */,
 				4D97D184181C4A29009A1968 /* SHConstant.h in Copy Files */,
@@ -68,7 +70,7 @@
 		};
 		C4DB3EE5181E85B0007AE943 /* Headers */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "${BUILD_DIR}/${CONFIGURATION}-universal/${PRODUCT_NAME}.framework/Headers";
 			dstSubfolderSpec = 0;
 			files = (

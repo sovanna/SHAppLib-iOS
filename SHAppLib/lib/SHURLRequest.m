@@ -98,7 +98,7 @@
 - (void)getRequest
 {
     if (self.url) {
-        Log(@"SHURLRequest.m | [url called] ~> %@", self.url);
+        Log(@"[url called] ~> %@", self.url);
     
         NSURL *url = [NSURL URLWithString:self.url];
         NSURLRequest *request = [NSURLRequest
@@ -113,7 +113,32 @@
 
 - (void)postRequest
 {
-//  TODO
+    if (self.url) {
+        Log(@"[url called] ~> %@", self.url);
+        NSURL *url = [NSURL URLWithString:self.url];
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
+                                        initWithURL:url
+                                        cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                        timeoutInterval:kREQUEST_TIMEOUT];
+        NSError *error = nil;
+        NSData *data = [NSJSONSerialization dataWithJSONObject:self.params
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+        if (error) {
+            [NSException raise:[error localizedDescription] format:@"Error Post"];
+        }
+        
+        NSString *length = [NSString stringWithFormat:@"%d", data.length];
+        [request setHTTPMethod:@"POST"];
+        [request setValue:length forHTTPHeaderField:@"Content-length"];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setHTTPBody:data];
+        
+        [NSURLConnection connectionWithRequest:request delegate:self];
+    } else {
+        if (self.block) self.block(nil, 400);
+    }
 }
 
 #pragma mark -
