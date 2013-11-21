@@ -37,6 +37,7 @@
 @property (nonatomic) NSMutableData *response;
 @property (nonatomic) id params;
 @property (nonatomic, strong) SHURLRequestCompletionHandler block;
+@property (nonatomic) int statusCode;
 
 + (SHURLRequest *)initRequestURL:(NSString *)url
                       withParams:(id)params
@@ -51,6 +52,7 @@
 @synthesize response = _response;
 @synthesize params = _params;
 @synthesize block = _block;
+@synthesize statusCode = _statusCode;
 
 #pragma mark -
 #pragma mark Public Static Initializer
@@ -151,10 +153,9 @@ didReceiveResponse:(NSURLResponse *)response {
     if(!isStatusCode) {
         [connection cancel];
         if (self.block) self.block(response, 500);
-    } else if ([(NSHTTPURLResponse *)response statusCode] != 200) {
-        if (self.block) self.block(response, [(NSHTTPURLResponse *)response statusCode]);
     }
-  
+    
+    [self setStatusCode:[(NSHTTPURLResponse *)response statusCode]];
     [self.response setLength:0];
 }
 
@@ -169,7 +170,10 @@ didReceiveResponse:(NSURLResponse *)response {
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    if (self.block) self.block(self.response, 200);
+    if (self.block) {
+        int statusCode = self.statusCode ? self.statusCode : 200;
+        self.block(self.response, statusCode);
+    }
 }
 
 @end
