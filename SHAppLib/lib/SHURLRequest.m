@@ -130,7 +130,7 @@
             [NSException raise:[error localizedDescription] format:@"Error Post"];
         }
         
-        NSString *length = [NSString stringWithFormat:@"%d", data.length];
+        NSString *length = [NSString stringWithFormat:@"%lu", (unsigned long)data.length];
         [request setHTTPMethod:@"POST"];
         [request setValue:length forHTTPHeaderField:@"Content-length"];
         [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
@@ -155,7 +155,7 @@ didReceiveResponse:(NSURLResponse *)response {
         if (self.block) self.block(response, 500);
     }
     
-    [self setStatusCode:[(NSHTTPURLResponse *)response statusCode]];
+    [self setStatusCode:(int)[(NSHTTPURLResponse *)response statusCode]];
     [self.response setLength:0];
 }
 
