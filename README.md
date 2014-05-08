@@ -1,14 +1,12 @@
 SHAppLib
 ========
 
-####This project gives a set of tools to develop iOS app faster with personal lib
+####This project gives a set of tools, snippets ... etc to develop iOS app faster
 
-# I. Notes
+### How this framework was builded
 
 *For more information, you can read the tutorial [creating a status library in ios tutorial](http://www.raywenderlich.com/41377/creating-a-status-library-in-ios-tutorial
 ) from Ray Wenderlich*
-
-*This how I build the framework.*
 
 #### Step 1. Setup xcode project
 
@@ -99,7 +97,62 @@ for `path`, add
 	
 **You can now use it in your project as other classic framework**
 
-# II. Docs
+# II. Sample usage for SHAppLib-iOS
 
-***coming soon***
+## a. SHTools
+Set of tools
 
+	/**
+	 * usefull when you want to serialize NSData into
+	 * readable NSDictionaray from a classic Request
+	 */
+	+ (NSDictionary *)jsonFromData:(id)data;
+	
+	example : 
+	
+	NSDictionary *response = [SHTools jsonFromData:data];
+	
+
+## b. SHURLRequest
+Make simple http request
+
+	+ (SHURLRequest *)getFromURL:(NSString *)url
+               andCompletion:(SHURLRequestCompletionHandler)block;
+
+	+ (SHURLRequest *)postToURL:(NSString *)url
+                 withParams:(id)params
+              andCompletion:(SHURLRequestCompletionHandler)block;
+	
+	example : 
+	
+	[SHURLRequest getFromURL:@"https://graph.facebook.com/24fox"
+               andCompletion:^(id data, int status) {
+                   if (status == 200 && data) {
+                       NSDictionary *response = [SHTools jsonFromData:data];
+                       NSLog(@"%@", response);
+                   }
+    }];
+    
+
+## c. SHUIRefreshBottom
+pull to refresh on bottom of UITableView
+
+	- (id)initWithTableView:(UIScrollView *)tableView andDelegate:(id)delegate;
+	
+	example : 
+	
+	SHUIRefreshBottom *refreshBottom = [[SHUIRefreshBottom alloc] initWithTableView:self.tableView andDelegate:self];
+
+
+	and implement the delegate method :
+	
+	#pragma mark - UIRefreshBottom
+
+	- (void)beginRefreshBottom:(SHUIRefreshBottom *)refreshBottom
+	{
+    	int64_t delayInSeconds = 3.0;
+    	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    	dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
+        	[self.refreshBottom endRefreshing];
+    	});
+	}
