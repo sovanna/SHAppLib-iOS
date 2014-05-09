@@ -14,6 +14,7 @@ float const UI_REFRESH_BOTTOM_HEIGHT = 44.0;
 @property (nonatomic, strong) UIScrollView *tableView;
 @property (nonatomic, strong) UIView *refreshView;
 @property (nonatomic) BOOL isRefreshing;
+@property (nonatomic) BOOL isSendActions;
 @end
 
 @implementation SHUIRefreshBottom
@@ -21,6 +22,7 @@ float const UI_REFRESH_BOTTOM_HEIGHT = 44.0;
 @synthesize tableView = _tableView;
 @synthesize refreshView = _refreshView;
 @synthesize isRefreshing = _isRefreshing;
+@synthesize isSendActions = _isSendActions;
 @synthesize delegate = _delegate;
 
 #pragma mark - Init
@@ -89,8 +91,9 @@ float const UI_REFRESH_BOTTOM_HEIGHT = 44.0;
         [self onDragging];
     }
     
-    if ([self.tableView isDecelerating] && self.isRefreshing) {
+    if ([self.tableView isDecelerating] && self.isRefreshing && !self.isSendActions) {
         [self setIsRefreshing:NO];
+        [self setIsSendActions:YES];
         
         [self sendActionsForControlEvents:UIControlEventValueChanged];
     }
@@ -141,6 +144,7 @@ float const UI_REFRESH_BOTTOM_HEIGHT = 44.0;
 - (void)removeBottomView
 {
     [self setIsRefreshing:NO];
+    [self setIsSendActions:NO];
     
     [self.refreshView removeFromSuperview];
     [self setRefreshView:nil];
