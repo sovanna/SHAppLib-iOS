@@ -22,6 +22,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		4D5465EE193B918100B3C4A1 /* KeychainHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5465EB193B918100B3C4A1 /* KeychainHandler.m */; };
+		4D5465EF193B918100B3C4A1 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5465ED193B918100B3C4A1 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4D5465F2193B93F500B3C4A1 /* KeychainHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D5465EA193B918100B3C4A1 /* KeychainHandler.h */; };
+		4D5465F3193B93F500B3C4A1 /* KeychainItemWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D5465EC193B918100B3C4A1 /* KeychainItemWrapper.h */; };
 		4D97D10A181C30DC009A1968 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D97D109181C30DC009A1968 /* Foundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		4D97D118181C30DD009A1968 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D97D117181C30DD009A1968 /* XCTest.framework */; };
 		4D97D119181C30DD009A1968 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D97D109181C30DC009A1968 /* Foundation.framework */; };
@@ -78,6 +82,8 @@
 			dstPath = "${BUILD_DIR}/${CONFIGURATION}-universal/${PRODUCT_NAME}.framework/Headers";
 			dstSubfolderSpec = 0;
 			files = (
+				4D5465F2193B93F500B3C4A1 /* KeychainHandler.h in Headers */,
+				4D5465F3193B93F500B3C4A1 /* KeychainItemWrapper.h in Headers */,
 				C45F51FA191BB10F00C0D24F /* SHUIRefreshBottom.h in Headers */,
 				C49DEFD71824348000889F96 /* NSString+StringEncoding.h in Headers */,
 				C4D4A853181EE04300AF461A /* SHTools.h in Headers */,
@@ -90,6 +96,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4D5465EA193B918100B3C4A1 /* KeychainHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainHandler.h; sourceTree = "<group>"; };
+		4D5465EB193B918100B3C4A1 /* KeychainHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainHandler.m; sourceTree = "<group>"; };
+		4D5465EC193B918100B3C4A1 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		4D5465ED193B918100B3C4A1 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		4D97D106181C30DC009A1968 /* libSHAppLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSHAppLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D97D109181C30DC009A1968 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4D97D10D181C30DC009A1968 /* SHAppLib-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SHAppLib-Prefix.pch"; sourceTree = "<group>"; };
@@ -203,6 +213,10 @@
 		4D97D12F181C33F1009A1968 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				4D5465EA193B918100B3C4A1 /* KeychainHandler.h */,
+				4D5465EB193B918100B3C4A1 /* KeychainHandler.m */,
+				4D5465EC193B918100B3C4A1 /* KeychainItemWrapper.h */,
+				4D5465ED193B918100B3C4A1 /* KeychainItemWrapper.m */,
 				C45ADFCB181EDFD100A2A807 /* SHTools.h */,
 				C45ADFCC181EDFD100A2A807 /* SHTools.m */,
 				4D97D130181C3561009A1968 /* SHURLRequest.h */,
@@ -317,11 +331,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D5465EE193B918100B3C4A1 /* KeychainHandler.m in Sources */,
 				C45F51FB191BB10F00C0D24F /* SHUIRefreshBottom.m in Sources */,
 				C45ADFCD181EDFD100A2A807 /* SHTools.m in Sources */,
 				C49DEFD61824313400889F96 /* NSString+StringEncoding.m in Sources */,
 				4D97D135181C3754009A1968 /* SHConstant.m in Sources */,
 				4D97D132181C3561009A1968 /* SHURLRequest.m in Sources */,
+				4D5465EF193B918100B3C4A1 /* KeychainItemWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
