@@ -147,7 +147,11 @@
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];
         if (error) {
-            [NSException raise:[error localizedDescription] format:@"Error Post"];
+            Log(@"%@", [error localizedDescription]);
+            if (self.block) {
+                self.block(error, 500);
+            }
+            return;
         }
         
         NSString *length = [NSString stringWithFormat:@"%lu", (unsigned long)data.length];
@@ -192,6 +196,7 @@ didReceiveResponse:(NSURLResponse *)response {
 
 - (void)connection:(NSURLConnection *)connection
     didFailWithError:(NSError *)error {
+    Log(@"%@", [error localizedDescription]);
     if (self.block) self.block(error, 400);
 }
 
