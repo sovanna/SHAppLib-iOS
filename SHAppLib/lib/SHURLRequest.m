@@ -36,11 +36,13 @@
 @property (nonatomic) NSString *url;
 @property (nonatomic) NSMutableData *response;
 @property (nonatomic) id params;
+@property (nonatomic) id headers;
 @property (nonatomic, strong) SHURLRequestCompletionHandler block;
 @property (nonatomic) int statusCode;
 
 + (SHURLRequest *)initRequestURL:(NSString *)url
                       withParams:(id)params
+                     withHeaders:(id)headers
                    andCompletion:(SHURLRequestCompletionHandler)block;
 - (void)getRequest;
 - (void)postRequest;
@@ -51,6 +53,7 @@
 @synthesize url = _url;
 @synthesize response = _response;
 @synthesize params = _params;
+@synthesize headers = _headers;
 @synthesize block = _block;
 @synthesize statusCode = _statusCode;
 
@@ -62,6 +65,7 @@
 {
     SHURLRequest *urlRequest = [SHURLRequest initRequestURL:url
                                                  withParams:nil
+                                                withHeaders:nil
                                               andCompletion:block];
     [urlRequest getRequest];
     return urlRequest;
@@ -73,6 +77,20 @@
 {
     SHURLRequest *urlRequest = [SHURLRequest initRequestURL:url
                                                  withParams:params
+                                                withHeaders:nil
+                                              andCompletion:block];
+    [urlRequest postRequest];
+    return urlRequest;
+}
+
++ (SHURLRequest *)postToURL:(NSString *)url
+                 withParams:(id)params
+                withHeaders:(id)headers
+              andCompletion:(SHURLRequestCompletionHandler)block
+{
+    SHURLRequest *urlRequest = [SHURLRequest initRequestURL:url
+                                                 withParams:params
+                                                withHeaders:headers
                                               andCompletion:block];
     [urlRequest postRequest];
     return urlRequest;
@@ -83,6 +101,7 @@
 
 + (SHURLRequest *)initRequestURL:(NSString *)url
                       withParams:(id)params
+                     withHeaders:(id)headers
                    andCompletion:(SHURLRequestCompletionHandler)block
 {
     SHURLRequest *urlRequest = [[[self class] alloc] init];
@@ -90,6 +109,7 @@
     if (url) [urlRequest setUrl:url];
     if (params) [urlRequest setParams:params];
     if (block) [urlRequest setBlock:block];
+    if (headers) [urlRequest setHeaders:headers];
   
     return urlRequest;
 }
@@ -136,6 +156,12 @@
         [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         [request setHTTPBody:data];
+        
+        if (self.headers) {
+            for (NSDictionary *h in self.headers) {
+                [request setValue:[h objectForKey:@"value"] forHTTPHeaderField:[h objectForKey:@"name"]];
+            }
+        }
         
         [NSURLConnection connectionWithRequest:request delegate:self];
     } else {

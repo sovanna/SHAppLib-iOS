@@ -41,4 +41,9 @@ typedef void(^SHURLRequestCompletionHandler)(id data, int status);
                  withParams:(id)params
               andCompletion:(SHURLRequestCompletionHandler)block;
 
++ (SHURLRequest *)postToURL:(NSString *)url
+                 withParams:(id)params
+                withHeaders:(id)headers
+              andCompletion:(SHURLRequestCompletionHandler)block;
+
 @end
