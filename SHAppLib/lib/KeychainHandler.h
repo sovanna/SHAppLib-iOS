@@ -1,10 +1,10 @@
 //
-//  SHURLRequest.h
+//  KeychainHandler.h
 //  SHAppLib
 //
-//  Created by Sovanna Hing on 26/10/2013.
+//  Created by Sovanna Hing on 01/05/2014.
 //
-//  Copyright (c) 2013, Sovanna Hing.
+//  Copyright (c) 2014, Sovanna Hing.
 //  All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without
@@ -29,27 +29,12 @@
 //  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+#import <Foundation/Foundation.h>
 
-typedef void(^SHURLRequestCompletionHandler)(id data, int status);
+@interface KeychainHandler : NSObject
 
-@interface SHURLRequest : NSObject
-
-+ (SHURLRequest *)getFromURL:(NSString *)url
-               andCompletion:(SHURLRequestCompletionHandler)block;
-
-+ (SHURLRequest *)postToURL:(NSString *)url
-                 withParams:(id)params
-              andCompletion:(SHURLRequestCompletionHandler)block;
-
-+ (SHURLRequest *)postToURL:(NSString *)url
-                 withParams:(id)params
-                withHeaders:(id)headers
-              andCompletion:(SHURLRequestCompletionHandler)block;
-
-+ (SHURLRequest *)postToURL:(NSString *)url
-                 withParams:(id)params
-                withHeaders:(id)headers
-                withTimeOut:(NSTimeInterval)timeout
-              andCompletion:(SHURLRequestCompletionHandler)block;
++ (void)storeCredentialsWithPseudo:(NSString *)pseudo andPassword:(NSString *)password;
++ (void)resetCredentials;
++ (NSDictionary *)storedCredentials;
 
 @end

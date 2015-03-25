@@ -36,11 +36,15 @@
 @property (nonatomic) NSString *url;
 @property (nonatomic) NSMutableData *response;
 @property (nonatomic) id params;
+@property (nonatomic) id headers;
 @property (nonatomic, strong) SHURLRequestCompletionHandler block;
 @property (nonatomic) int statusCode;
+@property (nonatomic) NSTimeInterval timeout;
 
 + (SHURLRequest *)initRequestURL:(NSString *)url
                       withParams:(id)params
+                     withHeaders:(id)headers
+                     withTimeOut:(NSTimeInterval)timeout
                    andCompletion:(SHURLRequestCompletionHandler)block;
 - (void)getRequest;
 - (void)postRequest;
@@ -51,28 +55,63 @@
 @synthesize url = _url;
 @synthesize response = _response;
 @synthesize params = _params;
+@synthesize headers = _headers;
 @synthesize block = _block;
 @synthesize statusCode = _statusCode;
+@synthesize timeout = _timeout;
 
 #pragma mark -
 #pragma mark Public Static Initializer
 
-+ (id)getFromURL:(NSString *)url
-   andCompletion:(SHURLRequestCompletionHandler)block
++ (SHURLRequest *)getFromURL:(NSString *)url
+               andCompletion:(SHURLRequestCompletionHandler)block
 {
     SHURLRequest *urlRequest = [SHURLRequest initRequestURL:url
                                                  withParams:nil
+                                                withHeaders:nil
+                                                withTimeOut:kREQUEST_TIMEOUT
                                               andCompletion:block];
     [urlRequest getRequest];
     return urlRequest;
 }
 
-+ (id)postToURL:(NSString *)url
-     withParams:(id)params
-  andCompletion:(SHURLRequestCompletionHandler)block
++ (SHURLRequest *)postToURL:(NSString *)url
+                 withParams:(id)params
+              andCompletion:(SHURLRequestCompletionHandler)block
 {
     SHURLRequest *urlRequest = [SHURLRequest initRequestURL:url
                                                  withParams:params
+                                                withHeaders:nil
+                                                withTimeOut:kREQUEST_TIMEOUT
+                                              andCompletion:block];
+    [urlRequest postRequest];
+    return urlRequest;
+}
+
++ (SHURLRequest *)postToURL:(NSString *)url
+                 withParams:(id)params
+                withHeaders:(id)headers
+              andCompletion:(SHURLRequestCompletionHandler)block
+{
+    SHURLRequest *urlRequest = [SHURLRequest initRequestURL:url
+                                                 withParams:params
+                                                withHeaders:headers
+                                                withTimeOut:kREQUEST_TIMEOUT
+                                              andCompletion:block];
+    [urlRequest postRequest];
+    return urlRequest;
+}
+
++ (SHURLRequest *)postToURL:(NSString *)url
+                 withParams:(id)params
+                withHeaders:(id)headers
+                withTimeOut:(NSTimeInterval)timeout
+              andCompletion:(SHURLRequestCompletionHandler)block
+{
+    SHURLRequest *urlRequest = [SHURLRequest initRequestURL:url
+                                                 withParams:params
+                                                withHeaders:headers
+                                                withTimeOut:timeout
                                               andCompletion:block];
     [urlRequest postRequest];
     return urlRequest;
@@ -83,12 +122,16 @@
 
 + (SHURLRequest *)initRequestURL:(NSString *)url
                       withParams:(id)params
+                     withHeaders:(id)headers
+                     withTimeOut:(NSTimeInterval)timeout
                    andCompletion:(SHURLRequestCompletionHandler)block
 {
     SHURLRequest *urlRequest = [[[self class] alloc] init];
     [urlRequest setResponse:[[NSMutableData alloc] init]];
     if (url) [urlRequest setUrl:url];
     if (params) [urlRequest setParams:params];
+    if (headers) [urlRequest setHeaders:headers];
+    if (timeout) [urlRequest setTimeout:timeout];
     if (block) [urlRequest setBlock:block];
   
     return urlRequest;
@@ -117,17 +160,25 @@
 {
     if (self.url) {
         Log(@"[url called] ~> %@", self.url);
+        
+        NSTimeInterval t = self.timeout ? self.timeout : kREQUEST_TIMEOUT;
         NSURL *url = [NSURL URLWithString:self.url];
+        
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
                                         initWithURL:url
                                         cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
-                                        timeoutInterval:kREQUEST_TIMEOUT];
+                                        timeoutInterval:t];
+        
         NSError *error = nil;
         NSData *data = [NSJSONSerialization dataWithJSONObject:self.params
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];
         if (error) {
-            [NSException raise:[error localizedDescription] format:@"Error Post"];
+            Log(@"%@", [error localizedDescription]);
+            if (self.block) {
+                self.block(error, 500);
+            }
+            return;
         }
         
         NSString *length = [NSString stringWithFormat:@"%lu", (unsigned long)data.length];
@@ -136,6 +187,13 @@
         [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         [request setHTTPBody:data];
+        
+        if (self.headers) {
+            for (NSDictionary *h in self.headers) {
+                [request setValue:[h objectForKey:@"value"]
+               forHTTPHeaderField:[h objectForKey:@"name"]];
+            }
+        }
         
         [NSURLConnection connectionWithRequest:request delegate:self];
     } else {
@@ -147,7 +205,8 @@
 #pragma mark NSURLConnection delegate
 
 - (void)connection:(NSURLConnection *)connection
-didReceiveResponse:(NSURLResponse *)response {
+didReceiveResponse:(NSURLResponse *)response
+{
     BOOL isStatusCode = [response respondsToSelector:@selector(statusCode)];
     
     if(!isStatusCode) {
@@ -160,16 +219,20 @@ didReceiveResponse:(NSURLResponse *)response {
 }
 
 - (void)connection:(NSURLConnection *)connection
-    didReceiveData:(NSData *)data {
+    didReceiveData:(NSData *)data
+{
     [self.response appendData:data];
 }
 
 - (void)connection:(NSURLConnection *)connection
-    didFailWithError:(NSError *)error {
+    didFailWithError:(NSError *)error
+{
+    Log(@"%@", [error localizedDescription]);
     if (self.block) self.block(error, 400);
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
     if (self.block) {
         int statusCode = self.statusCode ? self.statusCode : 200;
         self.block(self.response, statusCode);

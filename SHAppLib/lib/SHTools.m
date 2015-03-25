@@ -113,6 +113,7 @@
     if (json && [json isKindOfClass:[NSDictionary class]]) {
         return json;
     } else {
+        Log(@"%@", [error localizedDescription]);
         [NSException raise:[error debugDescription] format:nil];
     }
     
